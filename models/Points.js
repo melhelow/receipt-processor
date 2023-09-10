@@ -9,4 +9,5 @@ const pointsSchema = new Schema({
 
 });
 
-module.exports = mongoose.model('Points', pointsSchema);
+const Points = mongoose.model('Points', pointsSchema);
+module.exports = { Points};

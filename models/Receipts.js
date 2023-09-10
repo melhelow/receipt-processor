@@ -17,4 +17,5 @@ const receiptsSchema = new Schema({
     total: Number,
 });
 
-module.exports = mongoose.model('Receipts', receiptsSchema);
+const Receipts = mongoose.model('Receipts', receiptsSchema);
+module.exports = { Receipts };
