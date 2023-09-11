@@ -1,3 +1,26 @@
+/*
+psuedocode
+install dependencies
+build file structure
+build models
+models contain of Receipts and Points
+export  Models to index.js
+build schemas
+build resolvers
+build typeDefs
+export typeDefs and resolvers to index.js
+build seeders
+build server.js
+
+build utils
+connect to middleware
+run server on port 3001
+
+seed database
+test mutations and queries in graphql playground
+
+*/ 
+
 const express = require("express");
 const { ApolloServer } = require("apollo-server-express");
 const path = require("path");
