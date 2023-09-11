@@ -1,6 +1,6 @@
 // const { AuthenticationError } = require("apollo-server-express");
 const { Receipts, Points} = require("../models");
-const { getFormattedDate } = require("../utils/helpers");
+const { getFormattedDate , getFormattedTime} = require("../utils/helpers");
 
 const resolvers = {
     Query: {
@@ -18,14 +18,16 @@ const resolvers = {
         },
     },
     Mutation: {
-        createReceipt:  (_, { retailer, items,purchaseDate ,purchaseTime,total  }) => {
+        createReceipt:  (_, { retailer, items,purchaseDate ,purchaseTime  }) => {
             const formattedDate = getFormattedDate (purchaseDate);
+            const formattedTime = getFormattedTime (purchaseTime);
+
 
             const receipt = {
               
                 retailer,
                 purchaseDate: formattedDate,
-                purchaseTime,
+                purchaseTime:formattedTime,
                 items : items.map((ItemsInput) => ({
                     shortDescription: ItemsInput.shortDescription,
                     price: ItemsInput.price,
