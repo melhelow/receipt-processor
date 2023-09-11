@@ -27,7 +27,7 @@ function mapItemsFormat(items) {
 }
 function alphNumCharResults(alphNumChar) {
   if (!alphNumChar) {
-    return 0; // Handle the case where alphNumChar is not provided
+    return 0; 
   }
   
   const points = (alphNumChar.match(/[a-zA-Z0-9]/g) || []).length;
