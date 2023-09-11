@@ -1,6 +1,6 @@
 // const { AuthenticationError } = require("apollo-server-express");
 const { Receipts, Points} = require("../models");
-const { getFormattedDate , getFormattedTime} = require("../utils/helpers");
+const {calculateTotalPrice, getFormattedDate , getFormattedTime} = require("../utils/helpers");
 
 const resolvers = {
     Query: {
@@ -22,6 +22,7 @@ const resolvers = {
         createReceipt: async (_, { retailer, items, purchaseDate, purchaseTime }) => {
             const formattedDate = getFormattedDate(purchaseDate);
             const formattedTime = getFormattedTime(purchaseTime);
+            const total = calculateTotalPrice(items);
             console.log('Formatted Date:', formattedDate);
 
             try {
@@ -33,7 +34,7 @@ const resolvers = {
                   shortDescription: ItemsInput.shortDescription,
                   price: ItemsInput.price,
                 })),
-                total: items.reduce((accumulator, item) => accumulator + item.price, 0),
+                total,
               });
         
               return receipt;

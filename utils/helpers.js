@@ -18,4 +18,9 @@ const getFormattedTime = () => {
   return formattedTime;
 };
 
-module.exports = { getFormattedDate, getFormattedTime };
+function calculateTotalPrice(items) {
+  return items.reduce((accumulator, item) => accumulator + item.price, 0);
+}
+
+
+module.exports = { calculateTotalPrice, getFormattedDate, getFormattedTime };
