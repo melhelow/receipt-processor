@@ -15,8 +15,8 @@ const pointsSchema = new Schema({
     trimmedLenghtItems: Number,
     oddDays: Boolean,
     peakTime: Boolean,
-    totalPoints: Number,
     
+
 
 });
 
