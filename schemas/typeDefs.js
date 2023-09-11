@@ -4,6 +4,8 @@ const typeDefs = gql`
 type Receipts {
     _id: ID
     retailer: String
+    purchaseDate: String
+    purchaseTime: String
     items: [Items]
     total: Float
     }
