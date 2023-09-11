@@ -1,6 +1,6 @@
 // const { AuthenticationError } = require("apollo-server-express");
 const { Receipts, Points} = require("../models");
-const {mapItemsFormat ,calculateTotalPrice, getFormattedDate , getFormattedTime} = require("../utils/helpers");
+const {totalPoints,mapItemsFormat ,calculateTotalPrice, getFormattedDate , getFormattedTime} = require("../utils/helpers");
 
 const resolvers = {
     Query: {
@@ -45,7 +45,8 @@ const resolvers = {
 
         
     
-        createPoints: async (parent, { alphNumChar, roundDollar, totalMultipleOfQuarter, pairItems, trimmedLenghtItems, oddDays, peakTime, totalPoints }) => {
+        createPoints: async (_,{ alphNumChar, roundDollar, totalMultipleOfQuarter, pairItems, trimmedLenghtItems, oddDays, peakTime, totalPoints }) => {
+            const alphNumCharResults = totalPoints(Receipts);
             console.log({
                 alphNumChar,
                 roundDollar,
@@ -56,8 +57,9 @@ const resolvers = {
                 peakTime,
                 totalPoints,
             });
+            try {
             const points = await Points.create({
-                alphNumChar,
+                alphNumChar:alphNumCharResults,
                 roundDollar,
                 totalMultipleOfQuarter,
                 pairItems,
@@ -67,9 +69,11 @@ const resolvers = {
                 totalPoints,
             });
             return points;
-        },
+        } catch (error) {
+            throw new Error("Failed to create points: " + error.message);
+        }
     }
-
+    }
 };
 
 

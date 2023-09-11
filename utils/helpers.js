@@ -1,5 +1,3 @@
-
-
 const getFormattedDate = () => {
   const currentDate = new Date();
   const year = String(currentDate.getFullYear());
@@ -27,5 +25,16 @@ function mapItemsFormat(items) {
     price: ItemsInput.price,
   }));
 }
+function totalPoints(Receipts) {
+  let points = 0;
+  points+= (Receipts.retailer.match(/[a-zA-Z]/g) || []).length;
+}
 
-module.exports = { mapItemsFormat,calculateTotalPrice, getFormattedDate, getFormattedTime };
+module.exports = {
+   mapItemsFormat,
+   calculateTotalPrice, 
+   getFormattedDate, 
+   getFormattedTime,
+    totalPoints,
+  
+  };
