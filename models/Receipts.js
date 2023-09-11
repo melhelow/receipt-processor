@@ -4,10 +4,8 @@ const {Schema} = mongoose;
 
 const receiptsSchema = new Schema({
     retailer: String,
-    purchaseDate:{
-        type: Date,
-        default: Date.now
-    },
+    purchaseDate: Date,
+  
     purchaseTime: String,
     items : [
         {shortDescription: String,

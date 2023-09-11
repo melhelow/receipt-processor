@@ -18,21 +18,23 @@ const resolvers = {
         },
     },
     Mutation: {
-        createReceipt:  (_, {retailer, items,purchaseDate ,purchaseTime,total  }) => {
-            const formattedDate = getFormattedDate (purchaseDate)
+        createReceipt:  (_, { retailer, items,purchaseDate ,purchaseTime,total  }) => {
+            const formattedDate = getFormattedDate (purchaseDate);
 
             const receipt = {
+              
                 retailer,
                 purchaseDate: formattedDate,
                 purchaseTime,
-                items : items.map((itemInput) => ({
-                    shortDescription: itemInput.shortDescription,
-                    price: itemInput.price,
+                items : items.map((ItemsInput) => ({
+                    shortDescription: ItemsInput.shortDescription,
+                    price: ItemsInput.price,
                 })),
 
                 total,
             };
             return receipt;
+            
         },
     
         createPoints: async (parent, { alphNumChar, roundDollar, totalMultipleOfQuarter, pairItems, trimmedLenghtItems, oddDays, peakTime, totalPoints }) => {

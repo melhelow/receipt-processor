@@ -41,7 +41,7 @@ type Query {
 }
 
 type Mutation {
-createReceipt(retailer: String!, purchaseDate: String , purchaseTime: String,items: [ItemsInput] , total: Float): Receipts
+createReceipt(_id: ID,retailer: String!, items: [ItemsInput] , total: Float): Receipts
 createPoints(alphNumChar: Int, roundDollar: Int, totalMultipleOfQuarter: Float, pairItems: Int, trimmedLenghtItems: Int, oddDays: Int, peakTime: Int, totalPoints: Int): Points
 }
 
