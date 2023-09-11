@@ -25,9 +25,13 @@ function mapItemsFormat(items) {
     price: ItemsInput.price,
   }));
 }
-function totalPoints(Receipts) {
-  let points = 0;
-  points+= (Receipts.retailer.match(/[a-zA-Z]/g) || []).length;
+function alphNumCharResults(alphNumChar) {
+  if (!alphNumChar) {
+    return 0; // Handle the case where alphNumChar is not provided
+  }
+  
+  const points = (alphNumChar.match(/[a-zA-Z0-9]/g) || []).length;
+  return points;
 }
 
 module.exports = {
@@ -35,6 +39,6 @@ module.exports = {
    calculateTotalPrice, 
    getFormattedDate, 
    getFormattedTime,
-    totalPoints,
+   alphNumCharResults,
   
   };

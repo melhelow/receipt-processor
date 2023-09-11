@@ -1,6 +1,6 @@
 // const { AuthenticationError } = require("apollo-server-express");
 const { Receipts, Points} = require("../models");
-const {totalPoints,mapItemsFormat ,calculateTotalPrice, getFormattedDate , getFormattedTime} = require("../utils/helpers");
+const {alphNumCharResults,mapItemsFormat ,calculateTotalPrice, getFormattedDate , getFormattedTime} = require("../utils/helpers");
 
 const resolvers = {
     Query: {
@@ -11,6 +11,7 @@ const resolvers = {
             return Receipts.find();
         },
         getPoints: async (parent, args) => {
+            console.log(args);
             return await Points.findById(args._id);
         },
         getAllPoints: async () => {
@@ -41,40 +42,27 @@ const resolvers = {
             }
           },
 
-        
+          createPoints: async (_, { alphNumChar }) => {
+            const calculatedAlphNumChar = alphNumCharResults(alphNumChar);
+            console.log('calculatedAlphNumChar:', calculatedAlphNumChar); 
 
-        
-    
-        createPoints: async (_,{ alphNumChar, roundDollar, totalMultipleOfQuarter, pairItems, trimmedLenghtItems, oddDays, peakTime, totalPoints }) => {
-            const alphNumCharResults = totalPoints(Receipts);
-            console.log({
-                alphNumChar,
-                roundDollar,
-                totalMultipleOfQuarter,
-                pairItems,
-                trimmedLenghtItems,
-                oddDays,
-                peakTime,
-                totalPoints,
-            });
+          
             try {
-            const points = await Points.create({
-                alphNumChar:alphNumCharResults,
-                roundDollar,
-                totalMultipleOfQuarter,
-                pairItems,
-                trimmedLenghtItems,
-                oddDays,
-                peakTime,
-                totalPoints,
-            });
-            return points;
-        } catch (error) {
-            throw new Error("Failed to create points: " + error.message);
-        }
-    }
-    }
-};
+              const points = await Points.create({
+                alphNumChar: calculatedAlphNumChar,
+                
+              });
+          
+              return points;
+            } catch (error) {
+              throw new Error("Failed to create points: " + error.message);
+            }
+          }
+        },
+        };          
+          
+          
+
 
 
 
