@@ -18,26 +18,53 @@ const resolvers = {
         },
     },
     Mutation: {
-        createReceipt:  (_, { retailer, items,purchaseDate ,purchaseTime  }) => {
-            const formattedDate = getFormattedDate (purchaseDate);
-            const formattedTime = getFormattedTime (purchaseTime);
+        // createReceipt:  (_, { retailer, items,purchaseDate ,purchaseTime  }) => {
+        //     const formattedDate = getFormattedDate (purchaseDate);
+        //     const formattedTime = getFormattedTime (purchaseTime);
 
 
-            const receipt = {
+        //     const receipt = {
               
+        //         retailer,
+        //         purchaseDate: formattedDate,
+        //         purchaseTime:formattedTime,
+        //         items : items.map((ItemsInput) => ({
+        //             shortDescription: ItemsInput.shortDescription,
+        //             price: ItemsInput.price,
+        //         })),
+
+        //         total: items.reduce((accumulator, item) => accumulator + item.price, 0),
+        //     };
+        //     return receipt;
+            
+        // },
+        createReceipt: async (_, { retailer, items, purchaseDate, purchaseTime }) => {
+            const formattedDate = getFormattedDate(purchaseDate);
+            const formattedTime = getFormattedTime(purchaseTime);
+            console.log('Formatted Date:', formattedDate); // Add this line for debugging
+
+            try {
+              const receipt = await Receipts.create({
                 retailer,
                 purchaseDate: formattedDate,
-                purchaseTime:formattedTime,
-                items : items.map((ItemsInput) => ({
-                    shortDescription: ItemsInput.shortDescription,
-                    price: ItemsInput.price,
+                purchaseTime: formattedTime,
+                items: items.map((ItemsInput) => ({
+                  shortDescription: ItemsInput.shortDescription,
+                  price: ItemsInput.price,
                 })),
-
                 total: items.reduce((accumulator, item) => accumulator + item.price, 0),
-            };
-            return receipt;
-            
-        },
+              });
+        
+              return receipt;
+            } catch (error) {
+              // Handle any error that might occur during creation
+              throw new Error("Failed to create receipt: " + error.message);
+            }
+          },
+
+        
+
+        
     
         createPoints: async (parent, { alphNumChar, roundDollar, totalMultipleOfQuarter, pairItems, trimmedLenghtItems, oddDays, peakTime, totalPoints }) => {
             console.log({

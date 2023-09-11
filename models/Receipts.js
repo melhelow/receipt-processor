@@ -4,7 +4,7 @@ const {Schema} = mongoose;
 
 const receiptsSchema = new Schema({
     retailer: String,
-    purchaseDate: Date,
+    purchaseDate: String,
   
     purchaseTime: String,
     items : [
