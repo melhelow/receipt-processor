@@ -2,7 +2,7 @@ const db = require('../config/connection');
 const { Receipts} = require('../models');
 const {Points } = require('../models')
 const receiptSeeds = require('./receiptSeed.json');
-const pointSeeds = require('./pointSeed.json');
+const pointSeeds = require('./pointsSeed.json');
 
 db.once('open', async () => {
   try {
