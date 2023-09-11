@@ -31,7 +31,7 @@ const resolvers = {
                     price: ItemsInput.price,
                 })),
 
-                total,
+                total: items.reduce((accumulator, item) => accumulator + item.price, 0),
             };
             return receipt;
             
