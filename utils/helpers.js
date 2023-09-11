@@ -21,6 +21,11 @@ const getFormattedTime = () => {
 function calculateTotalPrice(items) {
   return items.reduce((accumulator, item) => accumulator + item.price, 0);
 }
+function mapItemsFormat(items) {
+  return items.map((ItemsInput) => ({
+    shortDescription: ItemsInput.shortDescription,
+    price: ItemsInput.price,
+  }));
+}
 
-
-module.exports = { calculateTotalPrice, getFormattedDate, getFormattedTime };
+module.exports = { mapItemsFormat,calculateTotalPrice, getFormattedDate, getFormattedTime };

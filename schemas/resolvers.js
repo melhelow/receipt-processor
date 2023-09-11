@@ -1,6 +1,6 @@
 // const { AuthenticationError } = require("apollo-server-express");
 const { Receipts, Points} = require("../models");
-const {calculateTotalPrice, getFormattedDate , getFormattedTime} = require("../utils/helpers");
+const {mapItemsFormat ,calculateTotalPrice, getFormattedDate , getFormattedTime} = require("../utils/helpers");
 
 const resolvers = {
     Query: {
@@ -23,6 +23,7 @@ const resolvers = {
             const formattedDate = getFormattedDate(purchaseDate);
             const formattedTime = getFormattedTime(purchaseTime);
             const total = calculateTotalPrice(items);
+            const mapItems = mapItemsFormat(items);
             console.log('Formatted Date:', formattedDate);
 
             try {
@@ -30,10 +31,7 @@ const resolvers = {
                 retailer,
                 purchaseDate: formattedDate,
                 purchaseTime: formattedTime,
-                items: items.map((ItemsInput) => ({
-                  shortDescription: ItemsInput.shortDescription,
-                  price: ItemsInput.price,
-                })),
+                items: mapItems,
                 total,
               });
         
