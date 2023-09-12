@@ -1,7 +1,7 @@
 # receipt-processor
 
 ## Description
-Receipts and Points processor is a backend application that processes recipts and calculate points based on 6 rules of calculations and store the data in the database.manager can get the recept by id, and can get all the recipts, and can add points based on receipt, and can get points by id
+Receipts and Points processor is a backend application that processes recipts and calculate points based on 6 rules of calculations and store the data in the database.manager can get the receipt by id, and can get all the receipts, and can add points based on receipt, and can get points by id
 
 ## used Technologies
 - JavaScript, Node.js, Express.js, MongoDB, Mongoose, GraphQl, Apolloserver, apollor-server-xpress, date-format, Github,VScode,GoogleChromeDev,NPM, 
@@ -13,7 +13,7 @@ Receipts and Points processor is a backend application that processes recipts an
 - press on the link `http://localhost:3001/graphql` when this message appear
 `🌍 Now listening on localhost:3001
 Use GraphQL at http://localhost:3001/graphql`
-- press on Query your server on the graphQl sandbox, becasue your your server is runing you can use the following queries and mutations to get the data from the database
+- press on Query your server on the graphQl sandbox, because your your server is runing you can use the following queries and mutations to get the data from the database
 
 ## video Demo
 - please check this screencastify Demo for your refernce
