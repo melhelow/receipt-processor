@@ -21,7 +21,7 @@ Use GraphQL at http://localhost:3001/graphql`
 
 ## Experinced Challanges
 - I faced some challenges in the beginning to understand the requirements, but after I read the requirements carefully and understand the rules of calculations, I was able to start the project and finish it on time.
--48 hrs delivery windows, I was able to finish the project on time, but I think if I had more time I would have done more testing and more validations.
+- 48 hrs delivery windows, I was able to finish the project on time, but I think if I had more time I would have done more testing and more validations.
 
 ## Future Development
 - I would like to add more validations and more testing to the project.
