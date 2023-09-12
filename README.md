@@ -7,7 +7,7 @@ Receipts and Points processor is a backend application that processes recipts an
 - JavaScript, Node.js, Express.js, MongoDB, Mongoose, GraphQl, Apolloserver, apollor-server-xpress, date-format, Github,VScode,GoogleChromeDev,NPM, 
 
 ## Instructions
-- Clone the repo
+- Clone the repo `https://github.com/melhelow/receipt-processor.git`
 - Run `npm install` to install all dependencies.
 - ` npm init -y` .
 - ` npm i express mongoose apollo-server-express graphql date-format @apollo/server`.
