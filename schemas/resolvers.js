@@ -1,6 +1,7 @@
 // const { AuthenticationError } = require("apollo-server-express");
 const { Receipts, Points} = require("../models");
-const {totalMulOfQuarter,
+const {forPairedItems,
+    totalMulOfQuarter,
     calculateRoundDollarPoints,
     alphNumCharResults,
     mapItemsFormat ,
@@ -49,13 +50,15 @@ const resolvers = {
             }
           },
 
-          createPoints: async (_, { alphNumChar, roundDollar, totalMultipleOfQuarter }) => {
+          createPoints: async (_, { alphNumChar, roundDollar, totalMultipleOfQuarter, pairItems}) => {
             const calculatedAlphNumChar = alphNumCharResults(alphNumChar);
             console.log('calculatedAlphNumChar:', calculatedAlphNumChar); 
             const roundDollarPoints = calculateRoundDollarPoints(roundDollar);
             console.log('roundDollarPoints:', roundDollarPoints);
             const mulOfDollar = totalMulOfQuarter(totalMultipleOfQuarter);
             console.log('mulOfDollar:', mulOfDollar);
+            const numOfPairedItems = forPairedItems(pairItems);
+            console.log('numOfPairedItems:', numOfPairedItems);
 
           
             try {
@@ -63,6 +66,7 @@ const resolvers = {
                 alphNumChar: calculatedAlphNumChar,
                 roundDollar: roundDollarPoints,
                 totalMultipleOfQuarter: mulOfDollar,
+                pairItems: numOfPairedItems,
                 
               });
           

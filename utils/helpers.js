@@ -64,6 +64,14 @@ function totalMulOfQuarter(totalMultipleOfQuarter) {
     return 0;
   }
 }
+function forPairedItems(pairItems) {
+  return Math.floor(pairItems / 2) * 5;
+  // if (items % 2 === 0) {
+  //   return 5;
+  // } else {
+  //   return 0;
+  // }
+}
 
 module.exports = {
    mapItemsFormat,
@@ -73,5 +81,6 @@ module.exports = {
    alphNumCharResults,
    calculateRoundDollarPoints,
    totalMulOfQuarter,
+   forPairedItems,
   
   };
