@@ -26,7 +26,6 @@ type Points {
   roundDollar: Boolean
   totalMultipleOfQuarter: Float
   pairItems: Int
-  trimmedLenghtItems: Int
   oddDays: String
   peakTime: String
   totalPoints: Int  
