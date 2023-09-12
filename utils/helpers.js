@@ -36,7 +36,7 @@ function alphNumCharResults(alphNumChar) {
 
 function calculateRoundDollarPoints(roundDollar) {
   return roundDollar ? 5 : 0;
-  
+
   // if (!roundDollar) {
   //   return 0;
   // }
@@ -57,12 +57,21 @@ function calculateRoundDollarPoints(roundDollar) {
   // }
 }
 
+function totalMulOfQuarter(totalMultipleOfQuarter) {
+  if (totalMultipleOfQuarter% 0.25 === 0) {
+    return 25;
+  } else {
+    return 0;
+  }
+}
+
 module.exports = {
    mapItemsFormat,
    calculateTotalPrice, 
    getFormattedDate, 
    getFormattedTime,
    alphNumCharResults,
-   calculateRoundDollarPoints
+   calculateRoundDollarPoints,
+   totalMulOfQuarter,
   
   };
