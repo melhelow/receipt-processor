@@ -13,8 +13,8 @@ const pointsSchema = new Schema({
     totalMultipleOfQuarter: Number,
     pairItems: Number,
     trimmedLenghtItems: Number,
-    oddDays: Boolean,
-    peakTime: Boolean,
+    oddDays: String,
+    peakTime: String,
     
 
 

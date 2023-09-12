@@ -27,8 +27,8 @@ roundDollar: Boolean
 totalMultipleOfQuarter: Float
 pairItems: Int
 trimmedLenghtItems: Int
-oddDays: Boolean
-peakTime: Boolean
+oddDays: String
+peakTime: String
 totalPoints: Int
 
 }
@@ -42,7 +42,7 @@ type Query {
 
 type Mutation {
 createReceipt(_id: ID,retailer: String!, items: [ItemsInput] , total: Float): Receipts
-createPoints(_id: ID,alphNumChar: String, roundDollar: Boolean, totalMultipleOfQuarter: Float, pairItems: Int, trimmedLenghtItems: Int, oddDays: Boolean, peakTime: Boolean, totalPoints: Int): Points
+createPoints(_id: ID,alphNumChar: String, roundDollar: Boolean, totalMultipleOfQuarter: Float, pairItems: Int, trimmedLenghtItems: Int, oddDays: String, peakTime: String, totalPoints: Int): Points
 }
 
 `;

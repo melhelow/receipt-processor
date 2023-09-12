@@ -73,6 +73,17 @@ function forPairedItems(pairItems) {
   // }
 }
 
+function calculateOddDayPoints(oddDays) {
+  const date = new Date(oddDays);
+  const day = date.getDate();
+  if (day % 2 === 1) {
+   
+    return 6;
+  }
+  return 0; 
+}
+
+
 module.exports = {
    mapItemsFormat,
    calculateTotalPrice, 
@@ -82,5 +93,6 @@ module.exports = {
    calculateRoundDollarPoints,
    totalMulOfQuarter,
    forPairedItems,
+   calculateOddDayPoints,
   
   };
