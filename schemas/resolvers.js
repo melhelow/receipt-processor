@@ -16,40 +16,59 @@ const {calculateTotalPoints,
 const resolvers = {
     Query: {
         getReceipt: async (parent, args) => {
-            return await Receipts.findById(args._id);
+            return await Receipts.findById(args.id);
         },
         getAllReceipts: async () => {
             return Receipts.find();
         },
-        getPoints: async (parent, args) => {
-            console.log(args);
-            return await Points.findById(args._id);
+        // getPointsById: async (parent, args) => {
+        //     console.log(args);
+        //     return await Points.findById(args._id);
+        // },
+        getPointsById: async (parent, args) => {
+          try {
+            const result = await Points.findById(args.id);
+            if (!result) {
+              throw new Error(`No record found with ID: ${args.id}`);
+            }
+            return result;
+          } catch (error) {
+            throw new Error(`Error fetching points: ${error.message}`);
+          }
         },
-        getTotalPoints: async (_, { alphNumChar, roundDollar, totalMultipleOfQuarter, pairItems, oddDays, peakTime }) => {
-          const calculatedAlphNumChar = alphNumCharResults(alphNumChar);
-          console.log('calculatedAlphNumChar:', calculatedAlphNumChar);
-          const roundDollarPoints = calculateRoundDollarPoints(roundDollar);
-          console.log('roundDollarPoints:', roundDollarPoints);
-          const mulOfDollar = totalMulOfQuarter(totalMultipleOfQuarter);
-          console.log('mulOfDollar:', mulOfDollar);
-          const numOfPairedItems = forPairedItems(pairItems);
-          console.log('numOfPairedItems:', numOfPairedItems);
-          const oddDayPoints = calculateOddDayPoints(oddDays);
-          console.log('oddDayPoints:', oddDayPoints);
-          const peakTimePoints = calculatePeakTimePoints(peakTime);
-          console.log('peakTimePoints:', peakTimePoints);
         
-          const totalPoints = calculateTotalPoints([
-            calculatedAlphNumChar,
-            roundDollarPoints,
-            mulOfDollar,
-            numOfPairedItems,
-            oddDayPoints,
-            peakTimePoints,
-          ]);
-        
-          return totalPoints;
+        getCalculatedTotalPoints: async (_, {totalPoints}) => {
+          const points = await Points.find({ totalPoints: totalPoints });
+          return points;
         },
+        // getCalculatedTotalPoints: async (_, args) => {
+        //   const {
+        //     alphNumChar,
+        //     roundDollar,
+        //     totalMultipleOfQuarter,
+        //     pairItems,
+        //     oddDays,
+        //     peakTime,
+        //   } = args;
+      
+        //   const calculatedAlphNumChar = alphNumCharResults(alphNumChar);
+        //   const roundDollarPoints = calculateRoundDollarPoints(roundDollar);
+        //   const mulOfDollar = totalMulOfQuarter(totalMultipleOfQuarter);
+        //   const numOfPairedItems = forPairedItems(pairItems);
+        //   const oddDayPoints = calculateOddDayPoints(oddDays);
+        //   const peakTimePoints = calculatePeakTimePoints(peakTime);
+      
+        //   const totalPoints = calculateTotalPoints([
+        //     calculatedAlphNumChar,
+        //     roundDollarPoints,
+        //     mulOfDollar,
+        //     numOfPairedItems,
+        //     oddDayPoints,
+        //     peakTimePoints,
+        //   ]);
+      
+        //   return totalPoints;
+        // },
 
         
           
@@ -92,50 +111,7 @@ const resolvers = {
             }
           },
 
-        //   createPoints: async (_, { alphNumChar, roundDollar, totalMultipleOfQuarter, pairItems, oddDays, peakTime,points}) => {
-        //     const calculatedAlphNumChar = alphNumCharResults(alphNumChar);
-        //     console.log('calculatedAlphNumChar:', calculatedAlphNumChar); 
-        //     const roundDollarPoints = calculateRoundDollarPoints(roundDollar);
-        //     console.log('roundDollarPoints:', roundDollarPoints);
-        //     const mulOfDollar = totalMulOfQuarter(totalMultipleOfQuarter);
-        //     console.log('mulOfDollar:', mulOfDollar);
-        //     const numOfPairedItems = forPairedItems(pairItems);
-        //     console.log('numOfPairedItems:', numOfPairedItems);
-        //     const oddDayPoints = calculateOddDayPoints(oddDays);
-        //     console.log('oddDayPoints:', oddDayPoints);
-        //     const peakTimePoints = calculatePeakTimePoints(peakTime);
-        //     console.log('peakTimePoints:', peakTimePoints);
-        //     const totalPoints = calculateTotalPoints([
-        //       calculatedAlphNumChar,
-        //       roundDollarPoints,
-        //       mulOfDollar,
-        //       numOfPairedItems,
-        //       oddDayPoints,
-        //       peakTimePoints,
-        //     ]);
-            
-
-
-          
-        //     try {
-        //       const points = await Points.create({
-        //         alphNumChar: calculatedAlphNumChar,
-        //         roundDollar: roundDollarPoints,
-        //         totalMultipleOfQuarter: mulOfDollar,
-        //         pairItems: numOfPairedItems,
-        //         oddDays: oddDayPoints,
-        //         peakTime: peakTimePoints,
-        //         totalpoints: totalPoints
-                
-        //       });
-          
-        //       return points;
-        //     } catch (error) {
-        //       throw new Error("No Points Created" + error.message);
-        //     }
-        //   }
-        // },
-        // };     
+  
         
         createPoints: async (_, { alphNumChar, roundDollar, totalMultipleOfQuarter, pairItems, oddDays, peakTime }) => {
           const calculatedAlphNumChar = alphNumCharResults(alphNumChar);
@@ -153,7 +129,8 @@ const resolvers = {
             oddDayPoints,
             peakTimePoints,
           ]);
-      
+          console.log('Total Points Calculated:', totalPoints);
+
           const points = new Points({
             alphNumChar,
             roundDollar,
@@ -166,7 +143,7 @@ const resolvers = {
       
           try {
             await points.save(); 
-            return { ...points._doc, _id: points.id, totalPoints }; 
+            return { ...points._doc, id: points.id, totalPoints }; 
           } catch (error) {
             throw new Error("Failed to create points: " + error.message);
           }

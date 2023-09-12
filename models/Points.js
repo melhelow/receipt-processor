@@ -7,7 +7,7 @@ const {Schema} = mongoose;
 const pointsSchema = new Schema({
 
     receiptId: String,
-    totalpoints: Number,
+    totalPoints: Number,
     alphNumChar: String,
     roundDollar: Number,
     totalMultipleOfQuarter: Number,

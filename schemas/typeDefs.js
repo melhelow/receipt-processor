@@ -2,7 +2,7 @@ const { gql } = require("apollo-server-express");
 const typeDefs = gql`
 
 type Receipts {
-    _id: ID
+    id: ID
     retailer: String
     purchaseDate: String
     purchaseTime: String
@@ -21,28 +21,36 @@ price: Float
 }
 
 type Points {
-    _id: ID
-alphNumChar: String
-roundDollar: Boolean
-totalMultipleOfQuarter: Float
-pairItems: Int
-trimmedLenghtItems: Int
-oddDays: String
-peakTime: String
-totalPoints: Int
-
+  id: ID
+  alphNumChar: String
+  roundDollar: Boolean
+  totalMultipleOfQuarter: Float
+  pairItems: Int
+  trimmedLenghtItems: Int
+  oddDays: String
+  peakTime: String
+  totalPoints: Int  
 }
 
+
 type Query {
-    getReceipt(_id: ID!): Receipts
+    getReceipt(id: ID!): Receipts
     getAllReceipts: [Receipts]
-    getPoints(_id: ID!): Points
-    getTotalPoints: Int
+    getPointsById(id: ID!): Points
+    getTotalPoints: Int 
+    getCalculatedTotalPoints(
+    alphNumChar: String
+    roundDollar: Boolean
+    totalMultipleOfQuarter: Float
+    pairItems: Int
+    oddDays: String
+    peakTime: String
+  ): Int
 }
 
 type Mutation {
-createReceipt(_id: ID,retailer: String!, items: [ItemsInput] , total: Float): Receipts
-createPoints(_id: ID,alphNumChar: String, roundDollar: Boolean, totalMultipleOfQuarter: Float, pairItems: Int, trimmedLenghtItems: Int, oddDays: String, peakTime: String, totalPoints: Int): Points
+createReceipt(id: ID,retailer: String!, items: [ItemsInput] , total: Float): Receipts
+createPoints(id: ID,alphNumChar: String, roundDollar: Boolean, totalMultipleOfQuarter: Float, pairItems: Int, trimmedLenghtItems: Int, oddDays: String, peakTime: String, totalPoints: Int): Points
 }
 
 `;
