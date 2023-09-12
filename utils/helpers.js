@@ -65,7 +65,7 @@ function totalMulOfQuarter(totalMultipleOfQuarter) {
   }
 }
 function forPairedItems(pairItems) {
-  const numericValue = parseFloat(pairItems); // Try to convert to a number
+  const numericValue = parseFloat(pairItems); 
 
   if (isNaN(numericValue)) {
     return 0;
