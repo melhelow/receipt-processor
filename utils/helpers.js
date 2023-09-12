@@ -65,13 +65,15 @@ function totalMulOfQuarter(totalMultipleOfQuarter) {
   }
 }
 function forPairedItems(pairItems) {
-  return Math.floor(pairItems / 2) * 5;
-  // if (items % 2 === 0) {
-  //   return 5;
-  // } else {
-  //   return 0;
-  // }
+  const numericValue = parseFloat(pairItems); // Try to convert to a number
+
+  if (isNaN(numericValue)) {
+    return 0;
+  }
+
+  return Math.floor(numericValue / 2) * 5;
 }
+
 
 function calculateOddDayPoints(oddDays) {
   const date = new Date(oddDays);
@@ -84,6 +86,9 @@ function calculateOddDayPoints(oddDays) {
 }
 
 function calculatePeakTimePoints(peakTime) {
+  if (!peakTime) {
+    return 0;
+  }
   const [hour, minute] = peakTime.split(':').map(Number);
 
   if (hour === 14 && minute >= 0 || (hour === 15 && minute >= 0) || (hour === 16 && minute === 0)) {
@@ -92,6 +97,27 @@ function calculatePeakTimePoints(peakTime) {
 
   return 0; 
 }
+
+function calculateTotalPoints(points) {
+  if (!Array.isArray(points)) {
+    return 0;
+  }
+  
+  const validPoints = points.filter((point) => point !== null).map(Number);
+  console.log('validPoints:', validPoints);
+  
+  if (validPoints.length === 0) {
+    return 0;
+  }
+  
+  const total = validPoints.reduce((accumulator, point) => accumulator + point, 0);
+  console.log('total:', total);
+  return total;
+}
+
+
+
+
 
 
 
@@ -106,5 +132,6 @@ module.exports = {
    forPairedItems,
    calculateOddDayPoints,
    calculatePeakTimePoints,
+   calculateTotalPoints
   
   };

@@ -37,7 +37,7 @@ type Query {
     getReceipt(_id: ID!): Receipts
     getAllReceipts: [Receipts]
     getPoints(_id: ID!): Points
-    getAllPoints: [Points]
+    getTotalPoints: Int
 }
 
 type Mutation {
