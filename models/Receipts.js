@@ -13,6 +13,8 @@ const receiptsSchema = new Schema({
         }
     ],
     total: Number,
+
+    
 });
 
 const Receipts = mongoose.model('Receipts', receiptsSchema);

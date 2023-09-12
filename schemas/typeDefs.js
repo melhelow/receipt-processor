@@ -34,6 +34,7 @@ type Points {
 
 
 type Query {
+    
     getReceipt(id: ID!): Receipts
     getAllReceipts: [Receipts]
     getPointsById(id: ID!): Points

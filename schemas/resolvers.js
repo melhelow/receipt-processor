@@ -36,11 +36,14 @@ const resolvers = {
             throw new Error(`Error fetching points: ${error.message}`);
           }
         },
+        // getReciptAndPoints: async (_,{id,retailer,purchaseDate,purchaseTime ,total, totalPoints}) => {
+        //   return await Receipts.find({id,retailer,purchaseDate,purchaseTime ,total, totalPoints});
+        // },
+
+
         
-        getCalculatedTotalPoints: async (_, {totalPoints}) => {
-          const points = await Points.find({ totalPoints: totalPoints });
-          return points;
-        },
+     
+        
         // getCalculatedTotalPoints: async (_, args) => {
         //   const {
         //     alphNumChar,

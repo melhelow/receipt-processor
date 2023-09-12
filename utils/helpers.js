@@ -24,6 +24,7 @@ function mapItemsFormat(items) {
     shortDescription: ItemsInput.shortDescription,
     price: ItemsInput.price,
   }));
+  
 }
 function alphNumCharResults(alphNumChar) {
   if (!alphNumChar) {
