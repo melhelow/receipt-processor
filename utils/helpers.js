@@ -34,11 +34,26 @@ function alphNumCharResults(alphNumChar) {
   return points;
 }
 
+function calculateRoundDollarPoints(total) {
+  // if (!roundDollar) {
+  //   return 0;
+  // }
+  // return 5;
+  // if (roundDollar) {
+  //   return 5;
+  // }
+  // if (Number.isInteger(total) === true) 
+  //   return 50;
+  // else
+  // return 0;
+}
+
 module.exports = {
    mapItemsFormat,
    calculateTotalPrice, 
    getFormattedDate, 
    getFormattedTime,
    alphNumCharResults,
+   calculateRoundDollarPoints
   
   };
