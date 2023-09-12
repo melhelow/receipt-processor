@@ -17,7 +17,7 @@ Use GraphQL at http://localhost:3001/graphql`
 
 ## video Demo
 - please check this screencastify Demo for your refernce
-`https://drive.google.com/file/d/1WfG2EPlgKc8A_HGDxOFmBQ2n6x-I_Qbf/view`
+- https://drive.google.com/file/d/1WfG2EPlgKc8A_HGDxOFmBQ2n6x-I_Qbf/view
 
 ## Experinced Challanges
 - I faced some challenges in the beginning to understand the requirements, but after I read the requirements carefully and understand the rules of calculations, I was able to start the project and finish it on time.
