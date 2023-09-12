@@ -9,7 +9,7 @@ const pointsSchema = new Schema({
     receiptId: String,
     points: Number,
     alphNumChar: String,
-    roundDollar: Boolean,
+    roundDollar: Number,
     totalMultipleOfQuarter: Number,
     pairItems: Number,
     trimmedLenghtItems: Number,

@@ -34,7 +34,9 @@ function alphNumCharResults(alphNumChar) {
   return points;
 }
 
-function calculateRoundDollarPoints(total) {
+function calculateRoundDollarPoints(roundDollar) {
+  return roundDollar ? 5 : 0;
+  
   // if (!roundDollar) {
   //   return 0;
   // }
@@ -46,6 +48,13 @@ function calculateRoundDollarPoints(total) {
   //   return 50;
   // else
   // return 0;
+
+  // const cents = total % 1;
+  // if (cents === 0) {
+  //   return 50;
+  // } else {
+  //   return 0;
+  // }
 }
 
 module.exports = {
