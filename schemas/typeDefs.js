@@ -38,15 +38,7 @@ type Query {
     getReceipt(id: ID!): Receipts
     getAllReceipts: [Receipts]
     getPointsById(id: ID!): Points
-    getTotalPoints: Int 
-    getCalculatedTotalPoints(
-    alphNumChar: String
-    roundDollar: Boolean
-    totalMultipleOfQuarter: Float
-    pairItems: Int
-    oddDays: String
-    peakTime: String
-  ): Int
+
 }
 
 type Mutation {
