@@ -8,7 +8,9 @@ Receipts and Points processor is a backend application that processes recipts an
 
 ## Instructions
 - Clone the repo
-- Run `npm install` to install all dependencies ` npm init -y` ,` npm i express mongoose apollo-server-express graphql date-format`
+- Run `npm install` to install all dependencies.
+- ` npm init -y` .
+- ` npm i express mongoose apollo-server-express graphql date-format`.
 - Run `npm start` to start the local server
 - press on the link `http://localhost:3001/graphql` when this message appear
 `🌍 Now listening on localhost:3001
