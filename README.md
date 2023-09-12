@@ -12,10 +12,10 @@ Receipts and Points processor is a backend application that processes recipts an
 - ` npm init -y` .
 - ` npm i express mongoose apollo-server-express graphql date-format @apollo/server`.
 - Run `npm start` to start the local server
-- press on the link `http://localhost:3001/graphql` 
 - when this message appear in your terminal :
 `🌍 Now listening on localhost:3001
-Use GraphQL at http://localhost:3001/graphql`
+Use GraphQL at http://localhost:3001/graphql`.
+- press on the link `http://localhost:3001/graphql` .
 - press on Query your server on the graphQl sandbox, because your your server is runing you can use the following queries and mutations to get the data from the database
 
 ## video Demo
