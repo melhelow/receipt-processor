@@ -83,6 +83,17 @@ function calculateOddDayPoints(oddDays) {
   return 0; 
 }
 
+function calculatePeakTimePoints(peakTime) {
+  const [hour, minute] = peakTime.split(':').map(Number);
+
+  if (hour === 14 && minute >= 0 || (hour === 15 && minute >= 0) || (hour === 16 && minute === 0)) {
+    return 10;
+  }
+
+  return 0; 
+}
+
+
 
 module.exports = {
    mapItemsFormat,
@@ -94,5 +105,6 @@ module.exports = {
    totalMulOfQuarter,
    forPairedItems,
    calculateOddDayPoints,
+   calculatePeakTimePoints,
   
   };
