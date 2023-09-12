@@ -25,9 +25,9 @@ Use GraphQL at http://localhost:3001/graphql`
 
 ## Future Development
 - I would like to add more validations and more testing to the project.
--better psuedocode.
+- better psuedocode.
 - I would like to add more features to the project like adding more rules of calculations and more features to the manager to be able to add more points to the customer.
--referance the Points Model to the  Receipt Model.
+- referance the Points Model to the  Receipt Model.
 - get Total points for all customers.
 - get Total points for each customer inside the purchase reeipt.
 
