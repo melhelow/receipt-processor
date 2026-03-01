@@ -36,58 +36,7 @@ const resolvers = {
             throw new Error(`Error fetching points: ${error.message}`);
           }
         },
-        // getReciptAndPoints: async (_,{id,retailer,purchaseDate,purchaseTime ,total, totalPoints}) => {
-        //   return await Receipts.find({id,retailer,purchaseDate,purchaseTime ,total, totalPoints});
-        // },
-
-
-        
-     
-        
-        // getCalculatedTotalPoints: async (_, args) => {
-        //   const {
-        //     alphNumChar,
-        //     roundDollar,
-        //     totalMultipleOfQuarter,
-        //     pairItems,
-        //     oddDays,
-        //     peakTime,
-        //   } = args;
-      
-        //   const calculatedAlphNumChar = alphNumCharResults(alphNumChar);
-        //   const roundDollarPoints = calculateRoundDollarPoints(roundDollar);
-        //   const mulOfDollar = totalMulOfQuarter(totalMultipleOfQuarter);
-        //   const numOfPairedItems = forPairedItems(pairItems);
-        //   const oddDayPoints = calculateOddDayPoints(oddDays);
-        //   const peakTimePoints = calculatePeakTimePoints(peakTime);
-      
-        //   const totalPoints = calculateTotalPoints([
-        //     calculatedAlphNumChar,
-        //     roundDollarPoints,
-        //     mulOfDollar,
-        //     numOfPairedItems,
-        //     oddDayPoints,
-        //     peakTimePoints,
-        //   ]);
-      
-        //   return totalPoints;
-        // },
-
-        
-          
-        
-        
-   
-          //  getTotalPoints: async (_, args) => {
-          //   const points = await Points.findById(args._id);
-          //   if (!points) {
-          //       throw new Error(`Receipt with ID ${args._id} not found`);
-          //   }
-          //   const {alphNumChar, roundDollar, totalMultipleOfQuarter, pairItems, oddDays, peakTime} = points;
-          //    const pointsArray = [alphNumChar, roundDollar, totalMultipleOfQuarter, pairItems, oddDays, peakTime];
-          //    const totalPoints = calculateTotalPoints(pointsArray);
-          //       return totalPoints;
-          //   },
+  
         
     },
     Mutation: {

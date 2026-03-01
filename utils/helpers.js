@@ -38,24 +38,6 @@ function alphNumCharResults(alphNumChar) {
 function calculateRoundDollarPoints(roundDollar) {
   return roundDollar ? 5 : 0;
 
-  // if (!roundDollar) {
-  //   return 0;
-  // }
-  // return 5;
-  // if (roundDollar) {
-  //   return 5;
-  // }
-  // if (Number.isInteger(total) === true) 
-  //   return 50;
-  // else
-  // return 0;
-
-  // const cents = total % 1;
-  // if (cents === 0) {
-  //   return 50;
-  // } else {
-  //   return 0;
-  // }
 }
 
 function totalMulOfQuarter(totalMultipleOfQuarter) {
@@ -115,11 +97,6 @@ function calculateTotalPoints(points) {
   console.log('total:', total);
   return total;
 }
-
-
-
-
-
 
 
 module.exports = {
