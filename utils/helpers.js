@@ -1,5 +1,5 @@
-const getFormattedDate = () => {
-  const currentDate = new Date();
+const getFormattedDate = (inputDate) => {
+  const currentDate = inputDate ? new Date(inputDate + 'T00:00:00') : new Date();
   const year = String(currentDate.getFullYear());
   const month = String(currentDate.getMonth() + 1).padStart(2, "0");
   const day = String(currentDate.getDate()).padStart(2, "0");
@@ -7,13 +7,20 @@ const getFormattedDate = () => {
   return formattedDate;
 };
 
-const getFormattedTime = () => {
+const getFormattedTime = (inputTime) => {
+  if (inputTime) {
+    // Accept HH:MM or HH:MM:SS from the frontend
+    const parts = inputTime.split(':');
+    const hours   = (parts[0] || '00').padStart(2, '0');
+    const minutes = (parts[1] || '00').padStart(2, '0');
+    const seconds = (parts[2] || '00').padStart(2, '0');
+    return `${hours}:${minutes}:${seconds}`;
+  }
   const currentDate = new Date();
-  const hours = String(currentDate.getHours()).padStart(2, "0");
+  const hours   = String(currentDate.getHours()).padStart(2, "0");
   const minutes = String(currentDate.getMinutes()).padStart(2, "0");
   const seconds = String(currentDate.getSeconds()).padStart(2, "0");
-  const formattedTime = hours + ":" + minutes + ":" + seconds;
-  return formattedTime;
+  return hours + ":" + minutes + ":" + seconds;
 };
 
 function calculateTotalPrice(items) {

@@ -27,9 +27,9 @@ const resolvers = {
         // },
         getPointsById: async (parent, args) => {
           try {
-            const result = await Points.findById(args.id);
+            const result = await Points.findOne({ receiptId: args.id });
             if (!result) {
-              throw new Error(`No record found with ID: ${args.id}`);
+              throw new Error(`No points record found for receipt ID: ${args.id}`);
             }
             return result;
           } catch (error) {
@@ -65,7 +65,7 @@ const resolvers = {
 
   
         
-        createPoints: async (_, { alphNumChar, roundDollar, totalMultipleOfQuarter, pairItems, oddDays, peakTime }) => {
+        createPoints: async (_, { id, alphNumChar, roundDollar, totalMultipleOfQuarter, pairItems, oddDays, peakTime }) => {
           const calculatedAlphNumChar = alphNumCharResults(alphNumChar);
           const roundDollarPoints = calculateRoundDollarPoints(roundDollar);
           const mulOfDollar = totalMulOfQuarter(totalMultipleOfQuarter);
@@ -84,13 +84,14 @@ const resolvers = {
           console.log('Total Points Calculated:', totalPoints);
 
           const points = new Points({
+            receiptId: id,
             alphNumChar,
             roundDollar,
             totalMultipleOfQuarter,
             pairItems,
             oddDays,
             peakTime,
-            totalPoints, 
+            totalPoints,
           });
       
           try {
